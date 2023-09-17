@@ -79,7 +79,16 @@ func complete_trial(index):
 			$AudioStreamPlayer.stop()
 			get_tree().change_scene("res://scenes/GoodEnding.tscn")
 	
-func end_game(ending):
-	print("Ending%d" % ending)
-	$AudioStreamPlayer.stop()
-	get_tree().change_scene("res://scenes/Ending%d.tscn" % ending)
+func end_game(player, phase):
+	if player == 1 and phase == 1:
+		# Player 1 kills
+		get_tree().change_scene("res://scenes/Ending2.tscn")
+	elif player == 2 and phase == 1:
+		# Player 2 kills
+		get_tree().change_scene("res://scenes/Ending1.tscn")
+	elif player == 1 and phase == 2:
+		# Player 1 escapes
+		get_tree().change_scene("res://scenes/endingDoor2.tscn")
+	elif player == 2 and phase == 2:
+		# Player 2 escapes
+		get_tree().change_scene("res://scenes/endingDoor1.tscn")

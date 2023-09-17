@@ -62,11 +62,11 @@ func _process(delta):
 		if phase > 0:
 			if "flag" in other and phase == 1:
 				# If other is player and you are killer, end game with killer (you) wins
-				get_parent().get_parent().end_game(flag + 1)	
+				get_parent().get_parent().end_game(flag + 1, 1)	
 				return
 			if "gate" in other and phase == 2:
 				# If other is gate and you are runner, end game with runner (you) wins
-				get_parent().get_parent().end_game(flag + 1)	
+				get_parent().get_parent().end_game(flag + 1, 2)	
 				return				
 		elif "data" in other and other.data != null:
 			other.show_dialogue()
