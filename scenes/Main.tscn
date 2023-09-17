@@ -29,7 +29,7 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Level" parent="HBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
-total_time = 30
+total_time = 360
 
 [node name="ViewportContainer2" type="ViewportContainer" parent="HBoxContainer"]
 margin_left = 779.0
