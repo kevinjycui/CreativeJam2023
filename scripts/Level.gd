@@ -50,10 +50,12 @@ func _on_SecondTimer_timeout():
 	time += 1
 	var time_left = total_time - time
 	if time_left >= 0:
+		if time_left <= 10:
+			$AudioStreamPlayer.pitch_scale = 1.0		
 		emit_signal("update_timer_hud", time_left)
 	else:
 		$SecondTimer.stop()
-		$AudioStreamPlayer.pitch_scale = 1.0
+		$AudioStreamPlayer.pitch_scale = 1.1
 		emit_signal("end_phase", randi() % 2)
 		
 func trial_message():

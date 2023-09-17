@@ -7,6 +7,8 @@ func _ready():
 	$LastTrialLabel2.hide()
 
 func _on_Level_update_timer_hud(time):
+	if time <= 10:
+		$TimerLabel.add_color_override("font_color", Color(1,0,0,1))
 	$TimerLabel.text = str(time / 60) + "m " + str(time % 60).pad_zeros(2) + "s"
 	$TimerLabel.show()
 
