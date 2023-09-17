@@ -347,6 +347,9 @@ position = Vector2( -884, 1192 )
 [node name="ItemEyes" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( 2301, 86 )
 
+[node name="Cooler" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( -2703, -703 )
+
 [node name="Background" type="AnimatedSprite" parent="."]
 visible = false
 scale = Vector2( 10, 10 )
@@ -367,9 +370,6 @@ texture = ExtResource( 25 )
 stream = ExtResource( 10 )
 pitch_scale = 0.9
 autoplay = true
-
-[node name="Cooler" parent="AudioStreamPlayer" instance=ExtResource( 16 )]
-position = Vector2( -2703, -703 )
 
 [connection signal="end_phase" from="." to="YSort/Player1" method="_on_Level_end_phase"]
 [connection signal="end_phase" from="." to="YSort/Player2" method="_on_Level_end_phase"]
