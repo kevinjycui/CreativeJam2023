@@ -65,9 +65,15 @@ func _process(delta):
 			carry.set_data(other.item)
 			other.remove_item()
 			carry.hide()
-		elif carry != null and "desires" in other and other.desires == carry.index:
-			carry.set_target(other.get_node("ItemDespawn"))
-			carry.to_despawn = true
+			get_parent().get_parent().add_trial(carry.index)
+			
+		if "desires" in other and other.desires != -1:
+			get_parent().get_parent().add_trial(other.desires)
+			if carry != null and other.desires == carry.index:
+				carry.set_target(other.get_node("ItemDespawn"))
+				carry.to_despawn = true
+				get_parent().get_parent().complete_trial(other.desires)
+				other.change_dialogue("Nice.")
 		
 	position += velocity * delta
 	

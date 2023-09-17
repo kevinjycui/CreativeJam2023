@@ -24,3 +24,5 @@ func remove_item():
 	item = null
 	has_dialogue = false
 	
+func change_dialogue(message):
+	$Dialogue/DialogueUI.set_text(message)

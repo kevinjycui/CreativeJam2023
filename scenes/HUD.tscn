@@ -34,7 +34,7 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0m 00s"
 
-[node name="TaskLabel" type="Label" parent="."]
+[node name="TrialLabel" type="Label" parent="."]
 anchor_left = 0.501
 anchor_right = 0.501
 margin_left = -49.024
@@ -45,6 +45,7 @@ grow_horizontal = 2
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "TRIALS"
+align = 1
 
 [node name="Player1View" type="TextureRect" parent="."]
 anchor_top = 0.987

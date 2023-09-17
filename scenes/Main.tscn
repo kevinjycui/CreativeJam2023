@@ -55,3 +55,4 @@ render_target_update_mode = 3
 current = true
 
 [connection signal="update_timer_hud" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_timer_hud"]
+[connection signal="update_trial_message" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_trial_message"]
