@@ -75,6 +75,9 @@ func complete_trial(index):
 		completed_trials.append(index)
 		trials_remaining -= 1
 		trial_message()
+		if trials_remaining == 0:
+			$AudioStreamPlayer.stop()
+			get_tree().change_scene("res://scenes/GoodEnding.tscn")
 	
 func end_game(ending):
 	print("Ending%d" % ending)
