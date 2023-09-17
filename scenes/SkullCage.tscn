@@ -14,6 +14,7 @@ position = Vector2( 45, -19 )
 script = ExtResource( 3 )
 data = ExtResource( 4 )
 item = ExtResource( 5 )
+spawn_delay = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 78, 116 )

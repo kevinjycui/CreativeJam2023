@@ -14,6 +14,7 @@ var flip_h = false
 
 var item_scene = preload("res://scenes/Item.tscn")
 var carry = null
+var carrying = false
 
 var phase = 0
 
@@ -70,24 +71,28 @@ func _process(delta):
 		elif "data" in other and other.data != null:
 			other.show_dialogue()
 			
-		if carry == null and "item" in other and other.item != null:
+		if !carrying and "item" in other and other.item != null:
 			$SpawnTimer.start()
 			carry = item_scene.instance()
 			carry.speed = other.item_speed
 			add_child(carry)
 			carry.global_position = other.get_node("ItemSpawn").global_position
 			carry.set_data(other.item)
-			other.remove_item()
 			carry.hide()
+			if !other.spawn_delay:
+				spawn_item()
+			other.remove_item()
 			get_parent().get_parent().add_trial(carry.index)
+			carrying = true
 			
 		if "desires" in other and other.desires != -1:
 			get_parent().get_parent().add_trial(other.desires)
-			if carry != null and other.desires == carry.index:
+			if carrying and other.desires == carry.index:
 				carry.set_target(other.get_node("ItemDespawn"))
 				carry.to_despawn = true
 				get_parent().get_parent().complete_trial(other.desires)
 				other.change_dialogue("Nice.")
+				carrying = false
 		
 	position += velocity * delta
 	
@@ -104,10 +109,14 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = flip_h
+		
+func spawn_item():
+	if carry != null:
+		carry.set_target(self)
+		carry.show()
 
 func _on_SpawnTimer_timeout():
-	carry.set_target(self)
-	carry.show()
+	spawn_item()
 
 func _on_Level_end_phase(rng): # rng is player that is killer
 	if flag == rng:

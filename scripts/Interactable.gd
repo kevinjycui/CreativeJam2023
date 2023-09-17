@@ -5,6 +5,7 @@ export var item : Resource = null
 export var desires := -1
 export var hide_on_collect := false
 export var item_speed := 400
+export var spawn_delay := true
 
 var has_dialogue = true
 

@@ -15,6 +15,7 @@ script = ExtResource( 3 )
 data = ExtResource( 4 )
 item = ExtResource( 5 )
 hide_on_collect = true
+spawn_delay = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 71, 109 )
