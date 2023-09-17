@@ -7,7 +7,6 @@
 [ext_resource path="res://art/background.png" type="Texture" id=5]
 [ext_resource path="res://scenes/ItemTombstone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Grim.tscn" type="PackedScene" id=7]
-[ext_resource path="res://resources/Grim.tres" type="Resource" id=8]
 [ext_resource path="res://resources/Player1Dialogue.tres" type="Resource" id=9]
 [ext_resource path="res://resources/ItemTombstone.tres" type="Resource" id=10]
 [ext_resource path="res://resources/Player2Dialogue.tres" type="Resource" id=11]
@@ -15,6 +14,7 @@
 [ext_resource path="res://art/Interactables/Tomb4.png" type="Texture" id=13]
 [ext_resource path="res://art/Interactables/Tomb1.png" type="Texture" id=14]
 [ext_resource path="res://art/Interactables/Tomb2.png" type="Texture" id=15]
+[ext_resource path="res://resources/Soul.tres" type="Resource" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -33,7 +33,6 @@ total_time = 120
 [node name="Grim" parent="Grim" instance=ExtResource( 7 )]
 position = Vector2( 915, 435 )
 z_index = 1
-data = ExtResource( 8 )
 
 [node name="Tombstones" type="Node" parent="."]
 
@@ -41,6 +40,7 @@ data = ExtResource( 8 )
 position = Vector2( -1417, -815 )
 z_index = 1
 data = ExtResource( 10 )
+item = ExtResource( 16 )
 
 [node name="Tombstone" parent="Tombstones" instance=ExtResource( 12 )]
 position = Vector2( -784, -815 )
@@ -75,6 +75,7 @@ data = ExtResource( 11 )
 
 [node name="Background" type="AnimatedSprite" parent="."]
 scale = Vector2( 10, 10 )
+z_index = -5
 frames = SubResource( 1 )
 offset = Vector2( 100, 0 )
 

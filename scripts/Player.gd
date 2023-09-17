@@ -4,10 +4,12 @@ export var speed = 400
 export var controls : Resource = null
 
 var started = false
+var velocity
+
+var item_scene = preload("res://scenes/Item.tscn")
+var carry = null
 
 export var data : Resource = null
-
-var item : Resource = null
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = false
@@ -23,7 +25,7 @@ func _on_ShowDialogueTimer_timeout():
 	$Dialogue/DialogueUI.hide()
 
 func _process(delta):
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed(controls.move_right):
 		velocity.x += 1
 	if Input.is_action_pressed(controls.move_left):
@@ -46,10 +48,21 @@ func _process(delta):
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		var other = collision.get_collider()
+		
 		if "data" in other and other.data != null:
 			other.show_dialogue()
-		if "item" in other and other.item != null:
-			item = other.item
+			
+		if carry == null and "item" in other and other.item != null:
+			$SpawnTimer.start()
+			carry = item_scene.instance()
+			add_child(carry)
+			carry.global_position = other.get_node("ItemSpawn").global_position
+			carry.set_data(other.item)
+			other.remove_item()
+			carry.hide()
+		elif carry != null and "desires" in other and other.desires == carry.index:
+			carry.set_target(other.get_node("ItemDespawn"))
+			carry.to_despawn = true
 		
 	position += velocity * delta
 	
@@ -61,3 +74,6 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 
+func _on_SpawnTimer_timeout():
+	carry.set_target(self)
+	carry.show()

@@ -42,7 +42,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Dialogue" type="Node2D" parent="."]
-z_index = 3
+z_index = 4
 
 [node name="DialogueUI" parent="Dialogue" instance=ExtResource( 6 )]
 margin_left = -36.0
@@ -50,4 +50,8 @@ margin_top = -120.0
 margin_right = -36.0
 margin_bottom = -120.0
 
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="ShowDialogueTimer" to="." method="_on_ShowDialogueTimer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

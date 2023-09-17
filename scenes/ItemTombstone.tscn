@@ -24,12 +24,15 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
 [node name="Dialogue" type="Node2D" parent="."]
-z_index = 3
+z_index = 4
 
 [node name="DialogueUI" parent="Dialogue" instance=ExtResource( 1 )]
 margin_left = 111.1
 margin_top = -50.7
 margin_right = 275.1
 margin_bottom = -50.7
+
+[node name="ItemSpawn" type="Position2D" parent="."]
+position = Vector2( 58, 97 )
 
 [connection signal="timeout" from="ShowDialogueTimer" to="." method="_on_ShowDialogueTimer_timeout"]
