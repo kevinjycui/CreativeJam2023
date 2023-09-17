@@ -3,8 +3,12 @@ extends KinematicBody2D
 export var speed = 400
 export var controls : Resource = null
 
+export var sprite_frames : SpriteFrames = null
+
 var started = false
 var velocity
+
+var flip_h = false
 
 var item_scene = preload("res://scenes/Item.tscn")
 var carry = null
@@ -12,6 +16,7 @@ var carry = null
 export var data : Resource = null
 
 func _ready() -> void:
+	$AnimatedSprite2D.frames = sprite_frames
 	$CollisionShape2D.disabled = false
 	$Dialogue/DialogueUI.set_text(data.dialogue)
 	$Dialogue/DialogueUI.hide()
@@ -69,10 +74,16 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		flip_h = velocity.x < 0
+		$AnimatedSprite2D.flip_h = flip_h
 	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.flip_v = false
+		$AnimatedSprite2D.flip_h = flip_h
+	else:
+		$AnimatedSprite2D.animation = "idle"
+		$AnimatedSprite2D.flip_v = false
+		$AnimatedSprite2D.flip_h = flip_h
 
 func _on_SpawnTimer_timeout():
 	carry.set_target(self)

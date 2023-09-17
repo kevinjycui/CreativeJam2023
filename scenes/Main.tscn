@@ -11,14 +11,14 @@ script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1604.0
-margin_bottom = 1080.0
+margin_bottom = 900.0
 
 [node name="ViewportContainer" type="ViewportContainer" parent="HBoxContainer"]
 margin_right = 800.0
-margin_bottom = 1080.0
+margin_bottom = 900.0
 
 [node name="Viewport" type="Viewport" parent="HBoxContainer/ViewportContainer"]
-size = Vector2( 800, 1080 )
+size = Vector2( 800, 900 )
 handle_input_locally = false
 hdr = false
 usage = 0
@@ -32,16 +32,26 @@ current = true
 [node name="ViewportContainer2" type="ViewportContainer" parent="HBoxContainer"]
 margin_left = 804.0
 margin_right = 1604.0
-margin_bottom = 1080.0
+margin_bottom = 900.0
 
 [node name="Viewport" type="Viewport" parent="HBoxContainer/ViewportContainer2"]
-size = Vector2( 800, 1080 )
+size = Vector2( 800, 900 )
 handle_input_locally = false
 hdr = false
 usage = 0
 render_target_update_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainer2/Viewport"]
+current = true
+
+[node name="ViewportContainer3" type="ViewportContainer" parent="."]
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer3"]
+size = Vector2( 1600, 900 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="ViewportContainer3/Viewport"]
 current = true
 
 [connection signal="update_timer_hud" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_timer_hud"]

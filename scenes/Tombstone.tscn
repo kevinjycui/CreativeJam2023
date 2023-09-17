@@ -1,19 +1,20 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/DialogueUI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://art/Interactables/Tomb3.png" type="Texture" id=2]
+[ext_resource path="res://art/Interactables/Tomb1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/SwapSpriteInteractable.gd" type="Script" id=3]
 [ext_resource path="res://resources/Tombstone.tres" type="Resource" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 76, 93 )
+extents = Vector2( 87, 66 )
 
 [node name="Tombstone" type="KinematicBody2D"]
+position = Vector2( 1, -37 )
 script = ExtResource( 3 )
 data = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 77.1, 90 )
+position = Vector2( 79, 105 )
 shape = SubResource( 1 )
 
 [node name="ShowDialogueTimer" type="Timer" parent="."]

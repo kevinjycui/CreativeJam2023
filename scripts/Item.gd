@@ -32,3 +32,11 @@ func set_target(player):
 func set_data(item):
 	index = item.index
 	$Sprite.texture = item.texture
+	
+func set_to_despawn():
+	to_despawn = true
+	var scene = get_parent().get_parent()
+	get_parent().remove_child(self)
+	scene.add_child(self)
+	set_owner(scene)
+	
