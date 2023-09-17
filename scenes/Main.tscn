@@ -14,11 +14,11 @@ margin_right = 1604.0
 margin_bottom = 900.0
 
 [node name="ViewportContainer" type="ViewportContainer" parent="HBoxContainer"]
-margin_right = 800.0
+margin_right = 775.0
 margin_bottom = 900.0
 
 [node name="Viewport" type="Viewport" parent="HBoxContainer/ViewportContainer"]
-size = Vector2( 800, 900 )
+size = Vector2( 775, 900 )
 handle_input_locally = false
 hdr = false
 usage = 0
@@ -29,14 +29,15 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Level" parent="HBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
+total_time = 30
 
 [node name="ViewportContainer2" type="ViewportContainer" parent="HBoxContainer"]
-margin_left = 804.0
-margin_right = 1604.0
+margin_left = 779.0
+margin_right = 1554.0
 margin_bottom = 900.0
 
 [node name="Viewport" type="Viewport" parent="HBoxContainer/ViewportContainer2"]
-size = Vector2( 800, 900 )
+size = Vector2( 775, 900 )
 handle_input_locally = false
 hdr = false
 usage = 0
@@ -49,7 +50,7 @@ zoom = Vector2( 2, 2 )
 [node name="ViewportContainer3" type="ViewportContainer" parent="."]
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer3"]
-size = Vector2( 1600, 900 )
+size = Vector2( 1550, 900 )
 handle_input_locally = false
 render_target_update_mode = 3
 
@@ -57,5 +58,6 @@ render_target_update_mode = 3
 current = true
 zoom = Vector2( 2, 2 )
 
+[connection signal="end_phase" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_end_phase"]
 [connection signal="update_timer_hud" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_timer_hud"]
 [connection signal="update_trial_message" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_trial_message"]
