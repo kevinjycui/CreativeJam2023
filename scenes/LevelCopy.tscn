@@ -495,6 +495,7 @@ animations = [ {
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 22 )
+total_time = 180
 
 [node name="YSort" type="YSort" parent="."]
 z_index = 1
