@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://art/Character/Devil1_run_right1.PNG" type="Texture" id=1]
 [ext_resource path="res://art/Character/Devil1_run_right2.PNG" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://scenes/DialogueUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://art/Character/Devil1_run_right4.PNG" type="Texture" id=7]
 [ext_resource path="res://art/InventoryItems/Key.png" type="Texture" id=8]
+[ext_resource path="res://art/pickup2.ogg" type="AudioStream" id=9]
+[ext_resource path="res://art/bell.wav" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 49.0
@@ -61,6 +63,13 @@ one_shot = true
 position = Vector2( 54, 17 )
 scale = Vector2( 0.314404, 0.285156 )
 texture = ExtResource( 8 )
+
+[node name="Bong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -4.0
+
+[node name="Ping" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="timeout" from="ShowDialogueTimer" to="." method="_on_ShowDialogueTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
