@@ -87,6 +87,7 @@ func _process(delta):
 			
 		if "desires" in other and other.desires != -1:
 			get_parent().get_parent().add_trial(other.desires)
+			$Bong.play()
 			if carrying and other.desires == carry.index:
 				carry.set_target(other.get_node("ItemDespawn"))
 				carry.to_despawn = true

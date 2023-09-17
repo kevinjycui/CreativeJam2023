@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bell.wav-3ac4eba651cea4cd7772799c08e2d585.sample"
+
+[deps]
+
+source_file="res://art/bell.wav"
+dest_files=[ "res://.import/bell.wav-3ac4eba651cea4cd7772799c08e2d585.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
