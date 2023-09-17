@@ -1,10 +1,10 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/Player1Controls.tres" type="Resource" id=2]
 [ext_resource path="res://resources/Player2Controls.tres" type="Resource" id=3]
 [ext_resource path="res://scripts/Level.gd" type="Script" id=4]
-[ext_resource path="res://art/background.png" type="Texture" id=5]
+[ext_resource path="res://art/Character/Devil1_run_right3.PNG" type="Texture" id=5]
 [ext_resource path="res://scenes/ItemTombstone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Grim.tscn" type="PackedScene" id=7]
 [ext_resource path="res://art/Character/Devil1_run_right1.PNG" type="Texture" id=8]
@@ -26,6 +26,11 @@
 [ext_resource path="res://scenes/Urn.tscn" type="PackedScene" id=24]
 [ext_resource path="res://art/Interactables/Ghost.png" type="Texture" id=25]
 [ext_resource path="res://scripts/PlayerCenter.gd" type="Script" id=26]
+[ext_resource path="res://scenes/SkullCage.tscn" type="PackedScene" id=27]
+[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=28]
+[ext_resource path="res://art/Character/Devil1_run_right4.PNG" type="Texture" id=29]
+[ext_resource path="res://art/Character/Devil2_run_right4.PNG" type="Texture" id=30]
+[ext_resource path="res://art/Character/Devil2_run_right3.PNG" type="Texture" id=31]
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 352, 224, 0, 224, 0, 96, 352, 96 )
@@ -252,7 +257,7 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 29 ), ExtResource( 17 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
@@ -265,23 +270,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 31 ), ExtResource( 19 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
-total_time = 120
+total_time = 300
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -296,7 +293,7 @@ tile_set = SubResource( 13 )
 cell_tile_origin = 2
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -1834969, 2, 0, -1703951, 9, 0, -1703946, 9, 0, -1703941, 10, 0, -1769472, 9, 0, -1769467, 9, 0, -1769462, 9, 0, -1507347, 7, 0, -1572861, 2, 0, -1572854, 9, 0, -1376246, 9, 0, -1376242, 10, 0, -1376241, 9, 0, -1376236, 9, 0, -1310686, 8, 0, -1310677, 8, 0, -1245164, 9, 0, -1245145, 10, 0, -1114109, 4, 0, -1114102, 2, 0, -1114092, 9, 0, -1114087, 10, 0, -1048537, 10, 0, -917513, 6, 0, -851929, 10, 0, -655321, 10, 0, -589814, 5, 0, -458713, 10, 0, -393171, 3, 0, -262105, 10, 0, -19, 7, 0, -4, 7, 0, -65497, 10, 0, 131111, 10, 0, 327719, 10, 0, 589793, 8, 0, 589803, 8, 0, 589813, 8, 0, 589823, 8, 0, 524297, 8, 0, 524307, 8, 0, 524317, 8, 0, 524327, 10, 0 )
+tile_data = PoolIntArray( -1834969, 2, 0, -1703951, 9, 0, -1703946, 9, 0, -1703941, 10, 0, -1769472, 9, 0, -1769467, 9, 0, -1769462, 9, 0, -1638450, 3, 0, -1572906, 8, 0, -1572896, 8, 0, -1507374, 7, 0, -1507361, 7, 0, -1507347, 7, 0, -1572861, 2, 0, -1572854, 9, 0, -1376246, 9, 0, -1376242, 10, 0, -1376241, 9, 0, -1376236, 9, 0, -1310686, 8, 0, -1310677, 8, 0, -1245164, 9, 0, -1245145, 10, 0, -1114162, 6, 0, -1114109, 4, 0, -1114102, 2, 0, -1114092, 9, 0, -1114087, 10, 0, -1048537, 10, 0, -917556, 6, 0, -917513, 6, 0, -786481, 6, 0, -851929, 9, 0, -851924, 8, 0, -655412, 6, 0, -655321, 10, 0, -524338, 6, 0, -589814, 5, 0, -458713, 9, 0, -327732, 6, 0, -393171, 3, 0, -262105, 10, 0, -131122, 6, 0, -46, 7, 0, -33, 7, 0, -19, 7, 0, -4, 7, 0, -65497, 9, 0, -65492, 8, 0, 65484, 6, 0, 131032, 2, 0, 131111, 10, 0, 262093, 6, 0, 327719, 10, 0, 458704, 9, 0, 458709, 9, 0, 458713, 10, 0, 458716, 9, 0, 589793, 8, 0, 589803, 8, 0, 589813, 8, 0, 589823, 8, 0, 524297, 8, 0, 524307, 8, 0, 524317, 8, 0, 524327, 10, 0, 655312, 9, 0, 655316, 9, 0, 655320, 9, 0, 655324, 9, 0, 720877, 3, 0 )
 
 [node name="ItemTombstone" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1047, -1643 )
@@ -330,6 +327,9 @@ data = ExtResource( 11 )
 [node name="Grim2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 915, 435 )
 
+[node name="SkullCage" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 2923, -1082 )
+
 [node name="PlayerCenter" type="Node2D" parent="YSort"]
 script = ExtResource( 26 )
 
@@ -337,7 +337,6 @@ script = ExtResource( 26 )
 visible = false
 scale = Vector2( 10, 10 )
 z_index = -5
-frames = SubResource( 1 )
 offset = Vector2( 100, 0 )
 
 [node name="SecondTimer" type="Timer" parent="."]
@@ -349,5 +348,9 @@ position = Vector2( 2037, 316 )
 scale = Vector2( 2.23221, 2.24452 )
 z_index = 1
 texture = ExtResource( 25 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+autoplay = true
 
 [connection signal="timeout" from="SecondTimer" to="." method="_on_SecondTimer_timeout"]

@@ -74,12 +74,12 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
-		flip_h = velocity.x < 0
+		flip_h = velocity.x < -1
 		$AnimatedSprite2D.flip_h = flip_h
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = flip_h
+		$AnimatedSprite2D.flip_h = flip_h		
 	else:
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.flip_v = false
