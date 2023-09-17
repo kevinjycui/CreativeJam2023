@@ -4,7 +4,7 @@ export var total_time := 300
 var time
 
 signal update_timer_hud(time)
-signal end_phase
+signal end_phase(rng)
 
 var trials = []
 var trials_remaining
@@ -46,7 +46,7 @@ func _on_SecondTimer_timeout():
 		emit_signal("update_timer_hud", time_left)
 	else:
 		$SecondTimer.stop()
-		emit_signal("end_phase")
+		emit_signal("end_phase", OS.get_unix_time() % 2)
 		
 func trial_message():
 	trial_message = "TRIALS\n"
@@ -64,3 +64,7 @@ func complete_trial(index):
 		trials.erase(index)
 	trials_remaining -= 1
 	trial_message()
+	
+func end_game(ending):
+	$AudioStreamPlayer.stop()
+	get_tree().change_scene("res://scenes/Ending%d.tscn" % ending)

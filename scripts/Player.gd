@@ -3,6 +3,8 @@ extends KinematicBody2D
 export var speed = 400
 export var controls : Resource = null
 
+export var flag = 0
+
 export var sprite_frames : SpriteFrames = null
 
 var started = false
@@ -12,6 +14,8 @@ var flip_h = false
 
 var item_scene = preload("res://scenes/Item.tscn")
 var carry = null
+
+var phase = 0
 
 export var data : Resource = null
 
@@ -54,7 +58,16 @@ func _process(delta):
 		var collision = get_slide_collision(i)
 		var other = collision.get_collider()
 		
-		if "data" in other and other.data != null:
+		if phase == 1:
+			if "flag" in other and phase == 1:
+				# If other is player and you are killer, end game with killer (you) wins
+				get_parent().get_parent().end_game(flag)	
+				return
+			if "gate" in other and phase == 2:
+				# If other is gate and you are runner, end game with runner (you) wins
+				get_parent().get_parent().end_game(flag)	
+				return				
+		elif "data" in other and other.data != null:
 			other.show_dialogue()
 			
 		if carry == null and "item" in other and other.item != null:
@@ -94,3 +107,9 @@ func _process(delta):
 func _on_SpawnTimer_timeout():
 	carry.set_target(self)
 	carry.show()
+
+func _on_Level_end_phase(rng):
+	if flag == rng:
+		phase = 1
+	else:
+		phase = 2

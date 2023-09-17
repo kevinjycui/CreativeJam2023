@@ -316,14 +316,17 @@ position = Vector2( -1084, -915 )
 texture = ExtResource( 13 )
 
 [node name="Player1" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( -386, -24 )
+position = Vector2( -164, -298 )
+scale = Vector2( 1.5, 1.5 )
 controls = ExtResource( 2 )
 sprite_frames = SubResource( 3 )
 data = ExtResource( 9 )
 
 [node name="Player2" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 367, -192 )
+position = Vector2( 78, -297 )
+scale = Vector2( 1.5, 1.5 )
 controls = ExtResource( 3 )
+flag = 1
 sprite_frames = SubResource( 2 )
 data = ExtResource( 11 )
 
@@ -341,7 +344,7 @@ position = Vector2( -2419, -764 )
 data = ExtResource( 34 )
 
 [node name="Cerberus" parent="YSort" instance=ExtResource( 35 )]
-position = Vector2( -912, 1309 )
+position = Vector2( -884, 1192 )
 
 [node name="Background" type="AnimatedSprite" parent="."]
 visible = false
@@ -366,4 +369,5 @@ autoplay = true
 [node name="ItemTombstone" parent="." instance=ExtResource( 33 )]
 position = Vector2( 2301, 86 )
 
+[connection signal="end_phase" from="." to="YSort/Player1" method="_on_Level_end_phase"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_SecondTimer_timeout"]
