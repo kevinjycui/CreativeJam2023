@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://art/UI/Title_Background.png" type="Texture" id=1]
+[ext_resource path="res://art/UI/Title.png" type="Texture" id=2]
+[ext_resource path="res://art/UI/PFP1.png" type="Texture" id=3]
+[ext_resource path="res://art/UI/PFP2.png" type="Texture" id=4]
+[ext_resource path="res://art/UI/Ctrls_Arrow_Keys.png" type="Texture" id=5]
+[ext_resource path="res://art/UI/Ctrls_WASD.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Xolonium-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 98
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="TitleBackground" type="Sprite" parent="."]
+position = Vector2( 766.625, 432.5 )
+scale = Vector2( 0.576959, 0.575333 )
+texture = ExtResource( 1 )
+
+[node name="CtrlsWasd" type="Sprite" parent="TitleBackground"]
+position = Vector2( -903.193, 553.195 )
+scale = Vector2( 0.638922, 0.675146 )
+z_index = 1
+texture = ExtResource( 6 )
+
+[node name="CtrlsArrowKeys" type="Sprite" parent="TitleBackground"]
+position = Vector2( 894.523, 549.274 )
+scale = Vector2( 0.667557, 0.688595 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="Pfp2" type="Sprite" parent="TitleBackground"]
+position = Vector2( 894.523, 167.897 )
+scale = Vector2( 0.777273, 0.717381 )
+texture = ExtResource( 4 )
+
+[node name="Pfp1" type="Sprite" parent="TitleBackground"]
+position = Vector2( -903.193, 167.897 )
+scale = Vector2( 0.777273, 0.717381 )
+texture = ExtResource( 3 )
+
+[node name="Title" type="Sprite" parent="TitleBackground"]
+position = Vector2( 2.38306, -418.019 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="TitleBackground"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -2052.14
+margin_top = -1208.86
+margin_right = -616.138
+margin_bottom = -1089.86
+custom_fonts/font = SubResource( 2 )
+text = "Press [ SPACE ] to start"
+align = 1

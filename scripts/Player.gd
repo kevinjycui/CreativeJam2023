@@ -7,7 +7,7 @@ export var flag = 0
 
 export var sprite_frames : SpriteFrames = null
 
-var started = false
+
 var velocity
 
 var flip_h = false
@@ -24,6 +24,7 @@ func _ready() -> void:
 	$CollisionShape2D.disabled = false
 	$Dialogue/DialogueUI.set_text(data.dialogue)
 	$Dialogue/DialogueUI.hide()
+	$Tool.hide()
 	show()
 	
 func show_dialogue():
@@ -47,8 +48,7 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
-		if !started:
-			started = true
+		if !get_parent().get_parent().started:
 			get_parent().get_parent().start()
 	else:
 		$AnimatedSprite2D.stop()
@@ -73,6 +73,7 @@ func _process(delta):
 		if carry == null and "item" in other and other.item != null:
 			$SpawnTimer.start()
 			carry = item_scene.instance()
+			carry.speed = other.item_speed
 			add_child(carry)
 			carry.global_position = other.get_node("ItemSpawn").global_position
 			carry.set_data(other.item)
@@ -108,8 +109,14 @@ func _on_SpawnTimer_timeout():
 	carry.set_target(self)
 	carry.show()
 
-func _on_Level_end_phase(rng):
+func _on_Level_end_phase(rng): # rng is player that is killer
 	if flag == rng:
-		phase = 1
+		phase = 1 # killer
+		$Tool.texture = load("res://art/InventoryItems/Dagger.PNG")
 	else:
-		phase = 2
+		phase = 2 # runner
+		$Tool.texture = load("res://art/InventoryItems/Final_key.png")
+	if carry != null:
+		carry.hide()
+		carry = null
+	$Tool.show()

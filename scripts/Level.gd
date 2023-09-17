@@ -6,6 +6,8 @@ var time
 signal update_timer_hud(time)
 signal end_phase(rng)
 
+var started = false
+
 var trials = []
 var completed_trials = []
 
@@ -28,6 +30,7 @@ onready var trial_beings = {
 signal update_trial_message(message)
 
 func _ready():
+	randomize()
 	new_game()
 
 func new_game():
@@ -37,9 +40,11 @@ func new_game():
 	emit_signal("update_trial_message", trial_message)
 
 func start():
-	time = 1
-	emit_signal("update_timer_hud", total_time - 1)
-	$SecondTimer.start()
+	if !started:
+		time = 1
+		emit_signal("update_timer_hud", total_time - 1)
+		$SecondTimer.start()
+		started = true
 
 func _on_SecondTimer_timeout():
 	time += 1
@@ -48,7 +53,8 @@ func _on_SecondTimer_timeout():
 		emit_signal("update_timer_hud", time_left)
 	else:
 		$SecondTimer.stop()
-		emit_signal("end_phase", OS.get_unix_time() % 2)
+		$AudioStreamPlayer.pitch_scale = 1.0
+		emit_signal("end_phase", randi() % 2)
 		
 func trial_message():
 	trial_message = "TRIALS\n"

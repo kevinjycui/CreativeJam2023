@@ -3,7 +3,8 @@ extends KinematicBody2D
 export var data : Resource = null
 export var item : Resource = null
 export var desires := -1
-export var hide_on_collect = false
+export var hide_on_collect := false
+export var item_speed := 400
 
 var has_dialogue = true
 

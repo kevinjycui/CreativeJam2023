@@ -28,7 +28,7 @@ func _ready() -> void:
 	players["3"].viewport.get_parent().hide()
 
 func _process(delta):
-	if players["1"].player.global_position.distance_to(players["2"].player.global_position) > players["1"].viewport.get_visible_rect().size.x / 2:
+	if players["1"].player.global_position.distance_to(players["2"].player.global_position) > players["1"].viewport.get_visible_rect().size.x * 3 / 4:
 		players["1"].viewport.get_parent().show()
 		players["2"].viewport.get_parent().show()
 		players["3"].viewport.get_parent().hide()

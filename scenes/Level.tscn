@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Grim.tscn" type="PackedScene" id=7]
 [ext_resource path="res://art/Character/Devil1_run_right1.PNG" type="Texture" id=8]
 [ext_resource path="res://resources/Player1Dialogue.tres" type="Resource" id=9]
+[ext_resource path="res://art/Losing Composer.wav" type="AudioStream" id=10]
 [ext_resource path="res://resources/Player2Dialogue.tres" type="Resource" id=11]
 [ext_resource path="res://scenes/Tombstone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://art/Interactables/Tomb4.png" type="Texture" id=13]
@@ -25,7 +26,6 @@
 [ext_resource path="res://art/Interactables/Ghost.png" type="Texture" id=25]
 [ext_resource path="res://scripts/PlayerCenter.gd" type="Script" id=26]
 [ext_resource path="res://scenes/SkullCage.tscn" type="PackedScene" id=27]
-[ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=28]
 [ext_resource path="res://art/Character/Devil1_run_right4.PNG" type="Texture" id=29]
 [ext_resource path="res://art/Character/Devil2_run_right4.PNG" type="Texture" id=30]
 [ext_resource path="res://art/Character/Devil2_run_right3.PNG" type="Texture" id=31]
@@ -363,8 +363,10 @@ z_index = 1
 texture = ExtResource( 25 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 28 )
+stream = ExtResource( 10 )
+pitch_scale = 0.9
 autoplay = true
 
 [connection signal="end_phase" from="." to="YSort/Player1" method="_on_Level_end_phase"]
+[connection signal="end_phase" from="." to="YSort/Player2" method="_on_Level_end_phase"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_SecondTimer_timeout"]

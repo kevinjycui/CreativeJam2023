@@ -58,5 +58,6 @@ render_target_update_mode = 3
 current = true
 zoom = Vector2( 2, 2 )
 
+[connection signal="end_phase" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_end_phase"]
 [connection signal="update_timer_hud" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_timer_hud"]
 [connection signal="update_trial_message" from="HBoxContainer/ViewportContainer/Viewport/Level" to="HUD" method="_on_Level_update_trial_message"]
