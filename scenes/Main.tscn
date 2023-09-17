@@ -25,6 +25,7 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="Level" parent="HBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
+total_time = 30
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainer/Viewport"]
 current = true

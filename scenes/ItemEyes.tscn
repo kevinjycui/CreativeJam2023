@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 69.3629
 
-[node name="ItemTombstone" type="KinematicBody2D"]
+[node name="ItemEyes" type="KinematicBody2D"]
 position = Vector2( 0, -43 )
 script = ExtResource( 3 )
 data = ExtResource( 4 )

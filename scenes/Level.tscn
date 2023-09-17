@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/Player1Controls.tres" type="Resource" id=2]
@@ -9,13 +9,11 @@
 [ext_resource path="res://scenes/Grim.tscn" type="PackedScene" id=7]
 [ext_resource path="res://art/Character/Devil1_run_right1.PNG" type="Texture" id=8]
 [ext_resource path="res://resources/Player1Dialogue.tres" type="Resource" id=9]
-[ext_resource path="res://resources/ItemTombstone.tres" type="Resource" id=10]
 [ext_resource path="res://resources/Player2Dialogue.tres" type="Resource" id=11]
 [ext_resource path="res://scenes/Tombstone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://art/Interactables/Tomb4.png" type="Texture" id=13]
 [ext_resource path="res://art/Interactables/Tomb1.png" type="Texture" id=14]
 [ext_resource path="res://art/Interactables/Tomb2.png" type="Texture" id=15]
-[ext_resource path="res://resources/Soul.tres" type="Resource" id=16]
 [ext_resource path="res://art/Character/Devil1_run_right2.PNG" type="Texture" id=17]
 [ext_resource path="res://art/Character/Devil1_idle_right.PNG" type="Texture" id=18]
 [ext_resource path="res://art/Character/Devil2_run_right2.PNG" type="Texture" id=19]
@@ -292,6 +290,7 @@ position = Vector2( -780, -1507 )
 position = Vector2( 956, -802 )
 
 [node name="TileMap" type="TileMap" parent="YSort"]
+position = Vector2( 40, -55 )
 tile_set = SubResource( 13 )
 cell_tile_origin = 2
 cell_y_sort = true
@@ -300,8 +299,6 @@ tile_data = PoolIntArray( -2162655, 8, 0, -2097109, 6, 0, -2031569, 6, 0, -20315
 
 [node name="ItemTombstone" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1047, -1643 )
-data = ExtResource( 10 )
-item = ExtResource( 16 )
 
 [node name="Tombstone" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( -1300, -915 )
@@ -316,14 +313,14 @@ position = Vector2( -1084, -915 )
 texture = ExtResource( 13 )
 
 [node name="Player1" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( -164, -298 )
+position = Vector2( -250, -441 )
 scale = Vector2( 1.5, 1.5 )
 controls = ExtResource( 2 )
 sprite_frames = SubResource( 3 )
 data = ExtResource( 9 )
 
 [node name="Player2" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 78, -297 )
+position = Vector2( 78, -440 )
 scale = Vector2( 1.5, 1.5 )
 controls = ExtResource( 3 )
 flag = 1
@@ -346,6 +343,9 @@ data = ExtResource( 34 )
 [node name="Cerberus" parent="YSort" instance=ExtResource( 35 )]
 position = Vector2( -884, 1192 )
 
+[node name="ItemEyes" parent="YSort" instance=ExtResource( 33 )]
+position = Vector2( 2301, 86 )
+
 [node name="Background" type="AnimatedSprite" parent="."]
 visible = false
 scale = Vector2( 10, 10 )
@@ -365,9 +365,6 @@ texture = ExtResource( 25 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )
 autoplay = true
-
-[node name="ItemTombstone" parent="." instance=ExtResource( 33 )]
-position = Vector2( 2301, 86 )
 
 [connection signal="end_phase" from="." to="YSort/Player1" method="_on_Level_end_phase"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_SecondTimer_timeout"]

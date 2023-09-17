@@ -19,8 +19,8 @@ var trial_names = {
 
 onready var trial_beings = {
 	0: $"YSort/Grim",
-	1: "$YSort/Cthulhu",
-	2: "$YSort/Cerberus",
+	1: $"YSort/Cthulhu",
+	2: $"YSort/Cerberus",
 }
 
 signal update_trial_message(message)
@@ -66,5 +66,6 @@ func complete_trial(index):
 	trial_message()
 	
 func end_game(ending):
+	print("Ending%d" % ending)
 	$AudioStreamPlayer.stop()
 	get_tree().change_scene("res://scenes/Ending%d.tscn" % ending)
