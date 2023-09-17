@@ -1,22 +1,23 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/DialogueUI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://art/Interactables/IMG_4956.png" type="Texture" id=2]
+[ext_resource path="res://art/InventoryItems/Tapioca.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Interactable.gd" type="Script" id=3]
-[ext_resource path="res://resources/SkullCage.tres" type="Resource" id=4]
-[ext_resource path="res://resources/PickupBone.tres" type="Resource" id=5]
+[ext_resource path="res://resources/PickupEyes.tres" type="Resource" id=4]
+[ext_resource path="res://resources/Eyes.tres" type="Resource" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 123, 48 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 69.3629
 
-[node name="SkullCage" type="KinematicBody2D"]
-position = Vector2( 45, -19 )
+[node name="ItemTombstone" type="KinematicBody2D"]
+position = Vector2( 0, -43 )
 script = ExtResource( 3 )
 data = ExtResource( 4 )
 item = ExtResource( 5 )
+hide_on_collect = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 78, 116 )
+position = Vector2( 71, 109 )
 shape = SubResource( 1 )
 
 [node name="ShowDialogueTimer" type="Timer" parent="."]
@@ -24,7 +25,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 79.1, 119.3 )
+position = Vector2( 69, 112 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
@@ -32,12 +33,12 @@ texture = ExtResource( 2 )
 z_index = 4
 
 [node name="DialogueUI" parent="Dialogue" instance=ExtResource( 1 )]
-margin_left = 115.0
-margin_top = -41.0
-margin_right = 279.0
-margin_bottom = -41.0
+margin_left = 114.0
+margin_top = -22.0
+margin_right = 278.0
+margin_bottom = -22.0
 
 [node name="ItemSpawn" type="Position2D" parent="."]
-position = Vector2( 106, 167 )
+position = Vector2( 71, 104 )
 
 [connection signal="timeout" from="ShowDialogueTimer" to="." method="_on_ShowDialogueTimer_timeout"]

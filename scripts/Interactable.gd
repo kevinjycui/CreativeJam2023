@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var data : Resource = null
 export var item : Resource = null
 export var desires := -1
+export var hide_on_collect = false
 
 var has_dialogue = true
 
@@ -23,6 +24,8 @@ func _on_ShowDialogueTimer_timeout():
 func remove_item():
 	item = null
 	has_dialogue = false
+	if hide_on_collect:
+		hide()
 	
 func change_dialogue(message):
 	$Dialogue/DialogueUI.set_text(message)

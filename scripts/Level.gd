@@ -17,8 +17,10 @@ var trial_names = {
 	2: "Cerberus desires bones.\n",
 }
 
-var trial_beings = {
-	0: $"YSort/Grim"
+onready var trial_beings = {
+	0: $"YSort/Grim",
+	1: "$YSort/Cthulhu",
+	2: "$YSort/Cerberus",
 }
 
 signal update_trial_message(message)
@@ -59,6 +61,6 @@ func add_trial(index):
 
 func complete_trial(index):
 	if index in trials:
-		trials.remove(index)
+		trials.erase(index)
 	trials_remaining -= 1
 	trial_message()
