@@ -7,6 +7,8 @@ signal update_timer_hud(time)
 signal end_phase(rng)
 
 var trials = []
+var completed_trials = []
+
 var trials_remaining
 
 var trial_message
@@ -51,7 +53,8 @@ func _on_SecondTimer_timeout():
 func trial_message():
 	trial_message = "TRIALS\n"
 	for trial in trials:
-		trial_message += trial_names[trial]
+		if !(trial in completed_trials):
+			trial_message += trial_names[trial]
 	emit_signal("update_trial_message", trial_message)
 
 func add_trial(index):
@@ -60,10 +63,10 @@ func add_trial(index):
 	trial_message()
 
 func complete_trial(index):
-	if index in trials:
-		trials.erase(index)
-	trials_remaining -= 1
-	trial_message()
+	if index in trials and !(index in completed_trials):
+		completed_trials.append(index)
+		trials_remaining -= 1
+		trial_message()
 	
 func end_game(ending):
 	print("Ending%d" % ending)
