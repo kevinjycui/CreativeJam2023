@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://resources/Cthulhu.tres" type="Resource" id=1]
 [ext_resource path="res://resources/Player1Controls.tres" type="Resource" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://art/Character/Devil2_run_right3.PNG" type="Texture" id=32]
 [ext_resource path="res://art/Character/Devil2_run_right4.PNG" type="Texture" id=33]
 [ext_resource path="res://scenes/Cooler.tscn" type="PackedScene" id=34]
+[ext_resource path="res://scenes/Gate.tscn" type="PackedScene" id=35]
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 352, 224, 0, 224, 0, 96, 352, 96 )
@@ -283,6 +284,7 @@ animations = [ {
 script = ExtResource( 22 )
 
 [node name="YSort" type="YSort" parent="."]
+z_index = 1
 
 [node name="Urn" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( -780, -1507 )
@@ -320,6 +322,7 @@ texture = ExtResource( 26 )
 [node name="Player1" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 2290, -4819 )
 scale = Vector2( 1.5, 1.5 )
+speed = 500
 controls = ExtResource( 2 )
 sprite_frames = SubResource( 3 )
 data = ExtResource( 3 )
@@ -327,6 +330,7 @@ data = ExtResource( 3 )
 [node name="Player2" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 2695, -4807 )
 scale = Vector2( 1.5, 1.5 )
+speed = 500
 controls = ExtResource( 4 )
 flag = 1
 sprite_frames = SubResource( 2 )
@@ -351,6 +355,9 @@ position = Vector2( 4553, -2622 )
 [node name="ItemEyes" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( -2140, 855 )
 
+[node name="Cooler" parent="YSort" instance=ExtResource( 34 )]
+position = Vector2( 3545, 419 )
+
 [node name="Background" type="AnimatedSprite" parent="."]
 visible = false
 scale = Vector2( 10, 10 )
@@ -373,8 +380,9 @@ stream = ExtResource( 30 )
 pitch_scale = 0.9
 autoplay = true
 
-[node name="Cooler" parent="." instance=ExtResource( 34 )]
-position = Vector2( 3545, 419 )
+[node name="Gate" parent="." instance=ExtResource( 35 )]
+position = Vector2( 3875, -5846 )
+z_index = 2
 
 [connection signal="end_phase" from="." to="YSort/Player1" method="_on_Level_end_phase"]
 [connection signal="end_phase" from="." to="YSort/Player2" method="_on_Level_end_phase"]

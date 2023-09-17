@@ -58,7 +58,7 @@ func _process(delta):
 		var collision = get_slide_collision(i)
 		var other = collision.get_collider()
 		
-		if phase == 1:
+		if phase > 0:
 			if "flag" in other and phase == 1:
 				# If other is player and you are killer, end game with killer (you) wins
 				get_parent().get_parent().end_game(flag + 1)	
